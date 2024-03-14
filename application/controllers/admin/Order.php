@@ -21,7 +21,7 @@ class Order extends CI_Controller {
 
         //pengaturan pagination
         $config['base_url'] = base_url().'admin/produk/index';
-        $config['total_rows'] = $this->mebel_model->get_alls('cart')->num_rows();
+        $config['total_rows'] = $this->mebel_model->get_alls('cart','id_transaksi')->num_rows();
         $config['per_page'] = '5';
         // Membuat Style pagination untuk BootStrap v4
         $config['full_tag_open'] = '<ul class="pagination justify-content-center">';        

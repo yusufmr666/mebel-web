@@ -78,11 +78,10 @@
 						<li class="has-dropdown">
 							<a href="<?= base_url()?>user/home">Shop</a>
 						</li>
-						<li><a href="about.html">About</a></li>
 						<li class="has-dropdown">
 							<a href="<?= base_url()?>user/service">Pesanan</a>
 						</li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="<?=base_url()?>user/chat">Chat</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">

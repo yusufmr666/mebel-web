@@ -31,6 +31,12 @@ class Mebel_model extends CI_Model{
         }
 	}
 
+        public function insert_data($data, $table)
+        {
+            $this->db->insert($table, $data);
+        }
+    
+
         function get_all_user(){
                 $hasil=$this->db->get('user');
                 return $hasil;
@@ -75,8 +81,8 @@ class Mebel_model extends CI_Model{
                 $hasil=$this->db->get($table);
                 return $hasil;
         }
-        function get_alls($table){
-                $this->db->group_by("id_transaksi");
+        function get_alls($table,$id){
+                $this->db->group_by($id);
                 $hasil=$this->db->get($table);
                 return $hasil;
         }
@@ -163,6 +169,18 @@ class Mebel_model extends CI_Model{
                 $hasil=$this->db->get();
                 return $hasil;
         }
+
+        function get_all_chat($number,$offset){
+                $this->db->select('*');
+                $this->db->from('faqone');
+                $this->db->join('user', 'user.id = faqone.id_user');;
+                $this->db->where('id_level', 'user');
+                $this->db->limit($number,$offset);
+                $this->db->group_by("id_user");
+                $hasil=$this->db->get();
+                return $hasil;
+        }
+         
          
         function simpan_cart($id_produk,$id_user,$status,$id_transaksi){
                 $data = array(
