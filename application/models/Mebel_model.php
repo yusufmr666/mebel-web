@@ -56,9 +56,9 @@ class Mebel_model extends CI_Model{
         }
 
           
-        function update_user($id,$nama,$username,$password,$email){
+        function update_user($id,$username,$password,$email){
                 $data = array(
-                        'name'          => $nama,
+                        
                         'username'       => $username,
                         'password'       => $password,
                         'email'       => $email

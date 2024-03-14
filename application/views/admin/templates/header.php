@@ -137,7 +137,7 @@
               <a href="<?= base_url()?>dashboard" class="menu-link">
                 <i class="menu-icon tf-icons mdi mdi-home-outline"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
-                <div class="badge bg-danger rounded-pill ms-auto">5</div>
+              
               </a>
               
             </li>
@@ -146,36 +146,36 @@
               <a
                 href="<?= base_url()?>admin/produk"
                 class="menu-link">
-                <i class="menu-icon tf-icons mdi mdi-email-outline"></i>
+                <i class="menu-icon tf-icons mdi mdi-view-grid-outline"></i>
                 <div data-i18n="Email">Produk</div>
-                <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
+               
               </a>
             </li>
             <li class="menu-item <?php if($id == "Order"){ echo "active open";}?>">
               <a
                 href="<?=base_url()?>order"
                 class="menu-link">
-                <i class="menu-icon tf-icons mdi mdi-message-outline"></i>
+                <i class="menu-icon tf-icons mdi mdi-cart-outline"></i>
                 <div data-i18n="Chat">Orderan</div>
-                <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
+                
               </a>
             </li>
             <li class="menu-item <?php if($id == "User"){ echo "active open";}?>">
               <a
                 href="<?=base_url()?>admin/user"
                 class="menu-link">
-                <i class="menu-icon tf-icons mdi mdi-calendar-blank-outline"></i>
-                <div data-i18n="Calendar">Calendar</div>
-                <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
+                <i class="menu-icon tf-icons mdi mdi-account-outline"></i>
+                <div data-i18n="Calendar">User</div>
+                
               </a>
             </li>
             <li class="menu-item <?php if($id == "Chat"){ echo "active open";}?>">
               <a
                 href="<?=base_url()?>chat"
                 class="menu-link">
-                <i class="menu-icon tf-icons mdi mdi-view-grid-outline"></i>
-                <div data-i18n="Kanban">Kanban</div>
-                <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
+                <i class="menu-icon tf-icons mdi mdi-message-outline"></i>
+                <div data-i18n="Kanban">Chat</div>
+               
               </a>
             </li>
           </ul>

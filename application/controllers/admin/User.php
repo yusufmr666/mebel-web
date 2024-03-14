@@ -64,5 +64,27 @@ class User extends CI_Controller {
         redirect('admin/user'); //redirect ke mahasiswa usai simpan data
     }
 
+    
+    public function edit(){
+        $nama=$this->input->post('nama');
+        $id = $this->input->post('id');
+        $password=md5($this->input->post('password'));
+        $username=$this->input->post('username');
+        $email=$this->input->post('email');
+        
+
+        $this->mebel_model->update_user($id,$username,$password,$email);
+        redirect('admin/user'); 
+    }
+
+    public function delete($id)
+    {
+
+        $where = array('id' => $id);
+        $this->mebel_model->delete($where,'user');
+        redirect('admin/user');
+
+
+    }
 
 }

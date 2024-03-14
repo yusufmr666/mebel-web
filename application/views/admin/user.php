@@ -1,5 +1,5 @@
 <div class="card">
-                <h5 class="card-header">Bordered Table</h5>
+                <h5 class="card-header">Bordered <?=$id?></h5>
                 <div class="card-body">
                     <div class="mb-3">
                         <button
@@ -7,7 +7,7 @@
                           class="btn btn-primary"
                           data-bs-toggle="modal"
                           data-bs-target="#basicModal">
-                          Launch modal
+                          Tambah User
                         </button>
                     </div>
                   <div class="table-responsive text-nowrap">
@@ -42,7 +42,7 @@
                           data-bs-target="#edit<?= $row->id?>"
                                   ><i class="mdi mdi-pencil-outline me-1"></i> Edit</a
                                 >
-                                <a class="dropdown-item" href="javascript:void(0);"
+                                <a class="dropdown-item" href="<?= base_url('admin/user/delete/' . $row->id) ?>" onclick="return confirm('Apakah anda yakin ingin mengapus?')" 
                                   ><i class="mdi mdi-trash-can-outline me-1"></i> Delete</a
                                 >
                               </div>
@@ -129,12 +129,12 @@
                                   aria-label="Close"></button>
                               </div>
                               <div class="modal-body">
-                              <form method="POST" action="<?= base_url()?>admin/produk/edit" enctype="multipart/form-data">
+                              <form method="POST" action="<?= base_url()?>admin/user/edit" enctype="multipart/form-data">
                                 <div class="row">
                                   <input type="hidden" name="id" value="<?=$row->id?>"/>
                                   <div class="col mb-4">
                                     <div class="form-floating form-floating-outline">
-                                      <input type="text" id="nameBasic" class="form-control" name="nama" placeholder="Nama" value="<?= $row->username?>" />
+                                      <input type="text" id="nameBasic" class="form-control" name="username" placeholder="Username" value="<?= $row->username?>" />
                                       <label for="name">Name</label>
                                     </div>
                                   </div>
@@ -154,6 +154,12 @@
                                       <span class="input-group-text cursor-pointer"><i class="mdi mdi-eye-off-outline"></i></span>
                                     </div>
                                     </div>
+                                    <div class="mt-4">
+                                    <div class="form-floating form-floating-outline">
+                                      <input type="text" id="nameBasic" class="form-control" name="email" placeholder="Email" value="<?= $row->email?>" />
+                                      <label for="name">Email</label>
+                                    </div>
+                                  </div>
                                   </div>
                                 
                                 </div>
