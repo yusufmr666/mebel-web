@@ -80,29 +80,16 @@
 						</li>
 						<li><a href="about.html">About</a></li>
 						<li class="has-dropdown">
-							<a href="<?= base_url()?>user/service">Services</a>
-							<ul class="dropdown">
-								<li><a href="#">Web Design</a></li>
-								<li><a href="#">eCommerce</a></li>
-								<li><a href="#">Branding</a></li>
-								<li><a href="#">API</a></li>
-							</ul>
+							<a href="<?= base_url()?>user/service">Pesanan</a>
 						</li>
 						<li><a href="contact.html">Contact</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
 					<ul>
-						<li class="search">
-							<div class="input-group">
-						      <input type="text" placeholder="Search..">
-						      <span class="input-group-btn">
-						        <button class="btn btn-primary" type="button"><i class="icon-search"></i></button>
-						      </span>
-						    </div>
-						</li>
 						<?php
 						$id_user = $this->session->userdata('id');
+						$username = $this->session->userdata('username');
 						$cart = $this->mebel_model->get_cart_byid($id_user)->num_rows();
 						if($cart == 0){
 							$jmlcart = '0';
@@ -111,7 +98,13 @@
 						}
 						
 						?>
-						<li class="shopping-cart"><a href="<?= base_url()?>user/chart" class="cart"><span><small><?= $jmlcart?></small><i class="icon-shopping-cart"></i></span></a></li>
+						<li class=""><a href="<?= base_url()?>user/chart" class="cart"><span><small><?= $jmlcart?></small><i class="icon-shopping-cart"></i></span></a></li>
+						<li class="has-dropdown">
+							<a href="javascript:void(0);"> <?php if(!empty($this->session->userdata('username'))){ echo "Hi, ".$username."!" ;}?></a>
+							<ul class="dropdown">
+								<li><a href="<?=base_url()?>login/aksi_logout">Logout</a></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>

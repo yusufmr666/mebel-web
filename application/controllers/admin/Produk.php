@@ -60,6 +60,7 @@ class Produk extends CI_Controller {
     {
         $nama=$this->input->post('nama');
         $deskripsi=$this->input->post('deskripsi');
+        $estimasi=$this->input->post('estimasi');
 
 
         $config['upload_path'] = FCPATH.'./assets/img/produk/';
@@ -87,13 +88,14 @@ class Produk extends CI_Controller {
 		}
     
 
-            $this->mebel_model->simpan_produk($nama,$deskripsi,$file_name1,$file_name2,$file_name3); //simpan ke database
+            $this->mebel_model->simpan_produk($nama,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3); //simpan ke database
             redirect('produk'); //redirect ke mahasiswa usai simpan data
     }
     public function edit() 
     {
         $id=$this->input->post('id');
         $nama=$this->input->post('nama');
+        $estimasi=$this->input->post('estimasi');
         $deskripsi=$this->input->post('deskripsi');
 
         $data_kat = $this->mebel_model->get_produk_byid($id)->result();
@@ -133,7 +135,27 @@ class Produk extends CI_Controller {
 		}
     
 
-            $this->mebel_model->update_produk($id,$nama,$deskripsi,$file_name1,$file_name2,$file_name3); //simpan ke database
+            $this->mebel_model->update_produk($id,$nama,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3); //simpan ke database
             redirect('produk'); //redirect ke mahasiswa usai simpan data
+    }
+
+    public function delete($id)
+    {
+        $data_kat = $this->mebel_model->get_produk_byid($id)->result();
+
+        foreach($data_kat as $row){
+            $id_file1 = $row->file_name1;
+            $id_file2 = $row->file_name2;
+            $id_file3 = $row->file_name3;
+        }
+        unlink(FCPATH.'./assets/img/produk/'.$id_file1);
+        unlink(FCPATH.'./assets/img/produk/'.$id_file2);
+        unlink(FCPATH.'./assets/img/produk/'.$id_file3);
+
+        $where = array('id_produk' => $id);
+        $this->mebel_model->delete($where,'produk');
+        redirect('produk');
+
+
     }
 }

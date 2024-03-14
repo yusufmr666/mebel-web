@@ -16,10 +16,10 @@
                         <?php foreach($query->result() as $row):?>
                           <td>
                             <i class="mdi mdi-bank mdi-20px text-primary me-3"></i
-                            ><span class="fw-medium"><?= $row->nama?></span>
+                            ><span class="fw-medium"><?= tgl_indonesia($row->tgl_pesan)?></span>
                           </td>
                           <td><?=$row->id_transaksi?></td>
-                          <td><?=$row->status?></td>
+                          <td> <span class="badge bg-label-success"><?=$row->status?></span></td>
                           <td> <button class="btn btn-outline-info btn-sm" href="javascript:void(0);" data-bs-toggle="modal"
                           data-bs-target="#edit<?= $row->id_transaksi?>"
                                   >Detail </button></td>
@@ -83,7 +83,7 @@
                                       ><span class="fw-medium"><?= $row->nama?></span>
                                     </td>
                                     <td><?=$row->harga?></td>
-                                    <td><?=$row->status?></td>
+                                    <td> <span class="badge bg-label-success"><?=$row->status?></span></td>
                                   </tr>
                                   <?php endforeach?>
                                 </tbody>
@@ -105,3 +105,17 @@
                 </div>
               </div>
               <!--/ Bordered Table -->
+
+              <?php
+              	function tgl_indonesia($date){
+                  $Bulan = array("Januari","Februari","Maret","April",
+                          "Mei","Juni","Juli","Agustus","September",
+                          "Oktober","November","Desember");
+                  $Hari = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+                  $tahun = substr($date, 0, 4);
+                  $bulan = substr($date, 5, 2);
+                  $tgl = substr($date, 8, 2);
+                  $hari = date("w", strtotime($date));
+                  return $result = $Hari[$hari].", ".$tgl." ".$Bulan[(int)$bulan-1]." ".$tahun." ";
+                }
+              ?>

@@ -39,12 +39,10 @@
                               </button>
                               <div class="dropdown-menu">
                                 <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal"
-                          data-bs-target="#edit<?= $row->id_produk?>"
-                                  ><i class="mdi mdi-pencil-outline me-1"></i> Edit</a
-                                >
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="mdi mdi-trash-can-outline me-1"></i> Delete</a
-                                >
+                                data-bs-target="#edit<?= $row->id_produk?>"
+                                  ><i class="mdi mdi-pencil-outline me-1"></i> Edit</a>
+                                <a class="dropdown-item"href="<?= base_url('admin/produk/delete/' . $row->id_produk) ?>" onclick="return confirm('Apakah anda yakin ingin mengapus?')" 
+                                  ><i class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
                               </div>
                             </div>
                           </td>
@@ -80,7 +78,21 @@
                                       <label for="name">Harga</label>
                                     </div>
                                   </div>
-                                  <div class="mt-2">
+                                  <div class="mb-4">
+                                  <div class="input-group input-group-merge">
+                                    <div class="form-floating form-floating-outline">
+                                      <input
+                                        type="text"
+                                        id="basic-default-email"
+                                        class="form-control"
+                                        placeholder="Estimasi"
+                                        name="estimasi"                                    
+                                        aria-describedby="basic-default-email2" />
+                                      <label for="basic-default-email">Estimasi</label>
+                                    </div>
+                                    <span class="input-group-text" id="basic-default-email2">Minggu</span>
+                                  </div>          
+                                  <div class="mt-4">
                                     <div class="form-floating form-floating-outline">
                                     <textarea
                                         class="form-control h-px-100"
@@ -142,6 +154,13 @@
                                       <input type="text" id="nameBasic" class="form-control" name="harga" placeholder="Harga" value="<?= $row->harga?>" />
                                       <label for="name">Harga</label>
                                     </div>
+                                  </div>
+                                  <div class="mb-4" >
+                                  <div class="form-floating form-floating-outline">
+                                      <input type="text" id="nameBasic" class="form-control" name="estimasi" placeholder="Harga" value="<?= $row->estimasi?> Minggu" />
+                                      <label for="name">Estimasi</label>
+                                  </div>
+                                  </div>
                                   </div>
                                   <div class="mt-2">
                                     <div class="form-floating form-floating-outline">

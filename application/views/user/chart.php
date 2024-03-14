@@ -21,7 +21,7 @@
 				<tr>
 				<th scope="col">Nama Barang</th>
 				<th scope="col">Harga</th>
-				<th scope="col">Last</th>
+				<th scope="col">Estimasi</th>
 				<th scope="col">Handle</th>
 				</tr>
 			</thead>
@@ -31,7 +31,8 @@
 				<tr>
 				<td><?= $row->nama?></td>
 				<td><?= rupiah($row->harga)?></td>
-				<td><?= $row->ukuran?></td>
+				<td><?= $row->estimasi?> Minggu</td>
+				<td> <a class="badge sizes" href="<?= base_url('user/chart/delete/' . $row->id) ?>" onclick="return confirm('Apakah anda yakin ingin mengapus?')"><i class="material-icons"></i>Batalkan Pemesanan</a></td>
 				</tr>
 				<input type="hidden" name="id" value="<?=$row->id?>"/>
 				<input type="hidden" name="idp" value="<?=$row->id_produk?>"/>  
@@ -84,3 +85,8 @@
         }
         
     </script>
+	<style>
+		.sizes{
+
+		}
+	</style>

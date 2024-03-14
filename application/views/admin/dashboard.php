@@ -23,9 +23,14 @@
                          } else {
                           $datas = $wait;
                          }
-                       
+                    
                         foreach($datas->result() as $row):
                         $status = $row->status;
+                        if($status == 'Pesan'){
+                          $pesan = 'bg-label-secondary';
+                        } else {
+                          $pesan = 'bg-label-warning';
+                        }
                         ?>
                         
                           <td>
@@ -33,7 +38,7 @@
                             ><span class="fw-medium"><?= $row->username?></span>
                           </td>
                           <td><?=$row->id_transaksi?></td>
-                          <td><?=$status?></td>
+                          <td><span class="badge <?php echo $pesan;?>"><?=$row->status?></span></td>
                           <td> <button class="btn btn-outline-info btn-sm" href="javascript:void(0);" data-bs-toggle="modal"
                           data-bs-target="#edit<?= $row->id_user?>"
                                   >Detail </button></td>
@@ -88,7 +93,7 @@
                                       ><span class="fw-medium"><?= $row->nama?></span>
                                     </td>
                                     <td><?=$row->harga?></td>
-                                    <td><?=$row->status?></td>
+                                    <td><span class="badge <?php echo $pesan;?>"><?=$row->status?></span></td>
                                   </tr>
                                   <?php endforeach?>
                                 </tbody>

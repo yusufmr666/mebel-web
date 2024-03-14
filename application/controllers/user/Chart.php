@@ -36,4 +36,14 @@ class Chart extends CI_Controller {
         $this->mebel_model->update_cart($id_user,$status,$id_transaksi); //simpan ke database
         redirect('user/chart'); //redirect ke mahasiswa usai simpan data
 	}
+
+    public function delete($id)
+    {
+
+        $where = array('id' => $id);
+        $this->mebel_model->delete($where,'cart');
+        redirect('user/chart');
+
+
+    }
 }

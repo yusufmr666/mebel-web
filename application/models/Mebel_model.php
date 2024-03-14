@@ -9,7 +9,7 @@ class Mebel_model extends CI_Model{
         $query = $this->db->get('user');
         if ($query->num_rows()>0){
             foreach ($query->result() as $row){
-                $sess = array ('name' => $row->name,
+                $sess = array ('username' => $row->username,
                 'id'=>$row->id, 'level'=>$row->level );
             }
         if($row->level == "admin"){
@@ -195,9 +195,10 @@ class Mebel_model extends CI_Model{
 
 
 
-        function simpan_produk($nama,$deskripsi,$file_name1,$file_name2,$file_name3){
+        function simpan_produk($nama,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3){
             $data = array(
                     'nama'  => $nama,
+                    'estimasi'  => $estimasi,
                     'deskripsi' => $deskripsi,
                     'file_name1' => $file_name1,
                     'file_name2' => $file_name2,
@@ -206,9 +207,10 @@ class Mebel_model extends CI_Model{
             $this->db->insert('produk',$data);
         }
 
-        function update_produk($id,$nama,$deskripsi,$file_name1,$file_name2,$file_name3){
+        function update_produk($id,$nama,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3){
                 $data = array(
                         'nama'  => $nama,
+                        'estimasi' => $estimasi,
                         'deskripsi' => $deskripsi,
                         'file_name1' => $file_name1,
                         'file_name2' => $file_name2,
