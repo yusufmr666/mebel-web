@@ -20,12 +20,12 @@ class Chat extends CI_Controller {
     }
 	public function index()
 	{
-		$name = "yusufmr";
         $id_user = $this->session->userdata('id');
         $id_faq = md5($id_user);
         $username = $this->session->userdata('username');
         $data = [
             'name' => $username,
+            'id' => "Chat",
             'page' => "profile",
             'datas' => $this->db->query("SELECT * FROM faqone WHERE id_faq='$id_faq' ORDER BY date ASC")->result_array(),
         ];

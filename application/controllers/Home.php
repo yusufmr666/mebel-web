@@ -13,7 +13,9 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+		$data['id']= "Home";
 		$data['produk'] = $this->mebel_model->get_all('produk');
+		$data['slider'] = $this->mebel_model->get_slider();
 		
 		$this->load->view('user/templates/header',$data);
 		$this->load->view('user/index');
@@ -21,6 +23,7 @@ class Home extends CI_Controller {
 	}
 	
 	public function detail($id){
+		$data['id']= "Detail Produk";
 		$data['detail']=$this->mebel_model->get_produk_byid($id);
 		$this->load->view('user/templates/header',$data);
 		$this->load->view('user/service');
@@ -39,6 +42,6 @@ class Home extends CI_Controller {
 		$id_transaksi = $this->input->post('id_transaksi');
        
         $this->mebel_model->simpan_cart($id,$id_user,$status,$id_transaksi); //simpan ke database
-        redirect('user/home'); //redirect ke mahasiswa usai simpan data
+        redirect('home'); //redirect ke mahasiswa usai simpan data
 	}
 }

@@ -56,7 +56,7 @@
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel1">Modal title</h4>
+                                <h4 class="modal-title" id="exampleModalLabel1">Tambah Produk</h4>
                                 <button
                                   type="button"
                                   class="btn-close"
@@ -68,13 +68,19 @@
                                 <div class="row">
                                   <div class="col mb-4">
                                     <div class="form-floating form-floating-outline">
-                                      <input type="text" id="nameBasic" class="form-control" name="nama" placeholder="Nama" />
+                                      <input type="text" id="nameBasic" class="form-control" name="nama" placeholder="Nama" required/>
                                       <label for="name">Name</label>
+                                    </div>
+                                  </div>
+                                  <div class="mb-4">
+                                    <div class="form-floating form-floating-outline">
+                                      <input type="text" id="nameBasic" class="form-control" name="jenis" placeholder="Nama" required/>
+                                      <label for="name">Jenis Kayu</label>
                                     </div>
                                   </div>
                                   <div class="mb-4" >
                                   <div class="form-floating form-floating-outline">
-                                      <input type="text" id="nameBasic" class="form-control" name="harga" placeholder="Harga" />
+                                      <input type="text" id="nameBasic" class="form-control" name="harga" placeholder="Harga" required/>
                                       <label for="name">Harga</label>
                                     </div>
                                   </div>
@@ -87,7 +93,7 @@
                                         class="form-control"
                                         placeholder="Estimasi"
                                         name="estimasi"                                    
-                                        aria-describedby="basic-default-email2" />
+                                        aria-describedby="basic-default-email2" required/>
                                       <label for="basic-default-email">Estimasi</label>
                                     </div>
                                     <span class="input-group-text" id="basic-default-email2">Minggu</span>
@@ -97,21 +103,21 @@
                                     <textarea
                                         class="form-control h-px-100"
                                         id="exampleFormControlTextarea1" name="deskripsi"
-                                        placeholder="Deskripsi"></textarea>
+                                        placeholder="Deskripsi" required></textarea>
                                         <label for="exampleFormControlTextarea1">Deskripsi Produk</label>
                                     </div>
                                   </div>
                                     <div class="mt-3">
                                         <label for="formFile" class="form-label">Foto 1</label>
-                                        <input class="form-control" name="foto1" type="file" id="formFile" />
+                                        <input class="form-control" name="foto1" type="file" id="formFile" required/>
                                     </div>
                                     <div class="mt-3">
                                         <label for="formFile" class="form-label">Foto 2</label>
-                                        <input class="form-control" name="foto2" type="file" id="formFile" />
+                                        <input class="form-control" name="foto2" type="file" id="formFile" required/>
                                     </div>
                                     <div class="mt-3">
                                         <label for="formFile" class="form-label">Foto 3</label>
-                                        <input class="form-control" name="foto3" type="file" id="formFile" />
+                                        <input class="form-control" name="foto3" type="file" id="formFile" required/>
                                     </div>
                                 
                                 </div>
@@ -133,7 +139,7 @@
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel1">Modal title</h4>
+                                <h4 class="modal-title" id="exampleModalLabel1">Edit Produk</h4>
                                 <button
                                   type="button"
                                   class="btn-close"
@@ -145,13 +151,19 @@
                                 <div class="row">
                                   <div class="col mb-4">
                                     <div class="form-floating form-floating-outline">
-                                      <input type="text" id="nameBasic" class="form-control" name="nama" value="<?= $row->nama?>"  placeholder="Nama" />
+                                      <input type="text" id="nameBasic" class="form-control" name="nama" value="<?= $row->nama?>"  placeholder="Nama" required/>
                                       <label for="name">Name</label>
+                                    </div>
+                                  </div>
+                                  <div class="mb-4">
+                                    <div class="form-floating form-floating-outline">
+                                      <input type="text" id="nameBasic" class="form-control" name="jenis" placeholder="Nama"  value="<?= $row->jenis?>" required />
+                                      <label for="name">Jenis Kayu</label>
                                     </div>
                                   </div>
                                   <div class="mb-4" >
                                   <div class="form-floating form-floating-outline">
-                                      <input type="text" id="nameBasic" class="form-control" name="harga" value="<?=$row->harga?>" placeholder="Harga" />
+                                      <input type="text" id="nameBasic" class="form-control" name="harga" value="<?=$row->harga?>" placeholder="Harga" required/>
                                       <label for="name">Harga</label>
                                     </div>
                                   </div>
@@ -164,7 +176,7 @@
                                         class="form-control"
                                         placeholder="Estimasi"
                                         name="estimasi"    value="<?=$row->estimasi?>"                                 
-                                        aria-describedby="basic-default-email2" />
+                                        aria-describedby="basic-default-email2" required/>
                                       <label for="basic-default-email">Estimasi</label>
                                     </div>
                                     <span class="input-group-text" id="basic-default-email2">Minggu</span>
@@ -174,21 +186,21 @@
                                     <textarea
                                         class="form-control h-px-100"
                                         id="exampleFormControlTextarea1" name="deskripsi"
-                                        placeholder="Deskripsi"><?=$row->deskripsi?></textarea>
+                                        placeholder="Deskripsi" required><?=$row->deskripsi?></textarea>
                                         <label for="exampleFormControlTextarea1">Deskripsi Produk</label>
                                     </div>
                                   </div>
                                     <div class="mt-3">
                                         <label for="formFile" class="form-label">Foto 1</label>
-                                        <input class="form-control" name="foto1" type="file" id="formFile" />
+                                        <input class="form-control" name="foto1" type="file" id="formFile" required/>
                                     </div>
                                     <div class="mt-3">
                                         <label for="formFile" class="form-label">Foto 2</label>
-                                        <input class="form-control" name="foto2" type="file" id="formFile" />
+                                        <input class="form-control" name="foto2" type="file" id="formFile" required/>
                                     </div>
                                     <div class="mt-3">
                                         <label for="formFile" class="form-label">Foto 3</label>
-                                        <input class="form-control" name="foto3" type="file" id="formFile" />
+                                        <input class="form-control" name="foto3" type="file" id="formFile" required/>
                                     </div>
                                 
                                 </div>

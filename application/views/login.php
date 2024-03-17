@@ -13,7 +13,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Login Basic - Pages | Materio - Bootstrap Material Design Admin Template</title>
+    <title>Login | Anwar Jaya Funitur</title>
 
     <meta name="description" content="" />
 
@@ -124,14 +124,14 @@
                     </svg>
                   </span>
                 </span>
-                <span class="app-brand-text demo text-heading fw-semibold">Materio</span>
+                <span class="app-brand-text demo text-heading fw-semibold">Anwar Jaya Funitur</span>
               </a>
             </div>
             <!-- /Logo -->
 
             <div class="card-body mt-2">
-              <h4 class="mb-2">Welcome to Materio! 👋</h4>
-              <p class="mb-4">Please sign-in to your account and start the adventure</p>
+              <h4 class="mb-2">Welcome to Anwar Jaya Funitur! 👋</h4>
+              <p class="mb-4">Please sign-in to your account</p>
 
               <form role="form" method="POST" action="<?= base_url()?>login/ceklogin" class="text-start">
                 <div class="form-floating form-floating-outline mb-3">

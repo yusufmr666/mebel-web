@@ -5,8 +5,8 @@
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t">
 						<div class="display-tc text-center animate-box" data-animate-effect="fadeIn">
-							<h1>Chart</h1>
-							<h2>Free html5 templates by <a href="https://themewagon.com/theme_tag/free/" target="_blank">Themewagon</a></h2>
+							<h1>Pesanan</h1>
+							<h2>Daftar Pesanan Anda</a></h2>
 						</div>
 					</div>
 				</div>
@@ -21,6 +21,7 @@
 				<tr>
 				<th scope="col">Tanggal Pesan</th>				
 				<th scope="col">ID Transaksi</th>
+				<th scope="col">Link Pembayaran</th>
                 <th scope="col">Status</th>
 				</tr>
 			</thead>
@@ -42,6 +43,11 @@
 					echo "ID Transaksi Belum Ada";
 					} else { 
 					echo	$row->id_transaksi;}?></td>
+					 <td><?php if(empty($row->link)){
+					echo "Menunggu";
+					} else { 
+					echo	$row->link;}?></td>
+			
 				<td><span class="<?php echo $pesan;?>"><?=$row->status?></span></td>
                 
 				</tr>

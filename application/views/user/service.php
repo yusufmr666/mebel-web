@@ -5,8 +5,10 @@
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t">
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Services</h1>
-							<h2>Free html5 templates by <a href="https://themewagon.com/theme_tag/free/" target="_blank">Themewagon</a></h2>
+							<h1><?= $id?></h1>
+							<?php foreach($detail->result() as $row):?>
+							<h2><?= $row->nama?></h2>
+							<?php endforeach?>
 						</div>
 					</div>
 				</div>
@@ -41,17 +43,7 @@
 								</figure>
 							</div>
 						</div>
-					</div>
-					<div class="row animate-box">
-						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-							<h2><?= $row->nama?></h2>
-							<p>
-								<a href="#" class="btn btn-primary btn-outline btn-lg">Add to Cart</a>
-								<a href="#" class="btn btn-primary btn-outline btn-lg">Compare</a>
-							</p>
-						</div>
-					</div>
-					
+					</div>				
 				</div>
 			</div>
 			<div class="row">
@@ -61,8 +53,15 @@
 						<div class="fh5co-tab-content-wrap">
 							<div class="fh5co-tab-content tab-content active" data-tab-content="1">
 								<div class="col-md-10 col-md-offset-1">
-									<span class="price"><?= $row->harga?></span>
+							
+									<p>
+										<span class="price"><?= rupiah($row->harga)?></span>
+										<a href="#" data-toggle="modal" data-target="#add<?= $row->id_produk?>" class="btn btn-primary btn-outline">Add to Cart</a>
+										
+									</p>						
 									<h2><?= $row->nama?></h2>
+									<p>Jenis Kayu : <?= $row->jenis?></p>
+									<p>Estimasi Pengerjaan : <?= $row->estimasi?> Minggu</p>
 									<p><?= $row->deskripsi?></p>
 
 								</div>
@@ -72,32 +71,51 @@
 					</div>
 					<?php endforeach?>
 				</div>
+				<?php foreach($detail->result() as $row):?>
+				<div class="modal fade" id="add<?= $row->id_produk?>" tabindex="-1" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">			
+						<div class="modal-body">
+						<form method="POST" action="<?= base_url()?>home/cart" enctype="multipart/form-data">
+						<h5>Masukkan produk ke keranjang?</h5>
+						<div class="row">
+							<input type="hidden" name="id" value="<?=$row->id_produk?>"/>   
+							<input type="hidden" name="status" value="Waiting"/> 
+							<input type="hidden" name="id_transaksi" value="2"/>                                
+						</div>
+				
+						</div>
+						<div class="modal-footer">
+						<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
+							Close
+						</button>
+						<button type="submit"  onclick="getDate()" class="btn btn-primary btn-m">Masukkan</button>
+						</div>
+						</form>
+					</div>
+					</div>
+					</div>
+				
+					</div>
+	</div>
+	<?php endforeach?>
+		
+	<?php
+	function rupiah($angka){
+		if ($angka === "0"){
+		  $hasil_rupiah = "-";
+		} else {
+		  $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+		}
+		  return $hasil_rupiah;
+	   
+	  }
+	?>
 			</div>
 		</div>
 	</div>
 
-	<div id="fh5co-started">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Newsletter</h2>
-					<p>Just stay tune for our latest Product. Now you can subscribe</p>
-				</div>
-			</div>
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2">
-					<form class="form-inline">
-						<div class="col-md-6 col-sm-6">
-							<div class="form-group">
-								<label for="email" class="sr-only">Email</label>
-								<input type="email" class="form-control" id="email" placeholder="Email">
-							</div>
-						</div>
-						<div class="col-md-6 col-sm-6">
-							<button type="submit" class="btn btn-default btn-block">Subscribe</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+	
+
+	

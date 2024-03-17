@@ -17,7 +17,7 @@ class User extends CI_Controller {
 		$data['id'] = "User";
 
 		//pengaturan pagination
-        $config['base_url'] = base_url().'admin/produk/index';
+        $config['base_url'] = base_url().'admin/user/index';
         $config['total_rows'] = $this->mebel_model->get_all('user')->num_rows();
         $config['per_page'] = '5';
         // Membuat Style pagination untuk BootStrap v4

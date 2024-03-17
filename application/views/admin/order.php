@@ -8,6 +8,7 @@
                           <th>Nama</th>
                           <th>Harga</th>
                           <th>Status</th>
+                          <th>Dikerjakan Oleh</th>
                         <th>Detail</th>
                         </tr>
                       </thead>
@@ -56,7 +57,7 @@
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel1">Modal title</h4>
+                                <h4 class="modal-title" id="exampleModalLabel1">Detail Order</h4>
                                 <button
                                   type="button"
                                   class="btn-close"

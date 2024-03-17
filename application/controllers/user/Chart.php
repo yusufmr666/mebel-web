@@ -16,6 +16,7 @@ class Chart extends CI_Controller {
 
 	public function index()
 	{
+        $data['id']= "Cart";
         $id_user = $this->session->userdata('id');
         $data['query'] = $this->mebel_model->get_cart_byid($id_user);
 
@@ -30,10 +31,11 @@ class Chart extends CI_Controller {
 		}
 		$idp = $this->input->post('idp');
         $id_user = $idx = $this->session->userdata('id');
+        $keterangan = $this->input->post('keterangan');
         $status = $this->input->post('status');
 		$id_transaksi = $this->input->post('id_transaksi');  
         
-        $this->mebel_model->update_cart($id_user,$status,$id_transaksi); //simpan ke database
+        $this->mebel_model->update_cart($id_user,$keterangan,$status,$id_transaksi); //simpan ke database
         redirect('user/chart'); //redirect ke mahasiswa usai simpan data
 	}
 

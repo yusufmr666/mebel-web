@@ -20,7 +20,7 @@ class Order extends CI_Controller {
         $data['id'] = "Order";
 
         //pengaturan pagination
-        $config['base_url'] = base_url().'admin/produk/index';
+        $config['base_url'] = base_url().'admin/order/index';
         $config['total_rows'] = $this->mebel_model->get_alls('cart','id_transaksi')->num_rows();
         $config['per_page'] = '5';
         // Membuat Style pagination untuk BootStrap v4

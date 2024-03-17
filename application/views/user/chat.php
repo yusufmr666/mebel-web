@@ -3,10 +3,11 @@
 <link href="<?= base_url() ?>/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
 
 <header class="page-header">
+<title>Anwar Jaya Funitur &mdash; <?=$id?></title>
   <div class="container ">
         <div class="row">
         <div class="col-md-1">
-        <a type="button" class="btn btn-success" href="<?=base_url()?>user/home">Back</a>
+        <a type="button" class="btn btn-success" href="<?=base_url()?>home">Back</a>
         </div>
         <div class="col-md-10 text-center">
             <h2><?= $name?></h2>

@@ -13,7 +13,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Register Basic - Pages | Materio - Bootstrap Material Design Admin Template</title>
+    <title>Register | Anwar Jaya Funiture</title>
 
     <meta name="description" content="" />
 
@@ -124,12 +124,12 @@
                     </svg>
                   </span>
                 </span>
-                <span class="app-brand-text demo text-heading fw-semibold">Materio</span>
+                <span class="app-brand-text demo text-heading fw-semibold">Anwar Jaya Funitur</span>
               </a>
             </div>
             <!-- /Logo -->
             <div class="card-body mt-2">
-              <h4 class="mb-2">Adventure starts here 🚀</h4>
+              <h4 class="mb-2">starts here 🚀</h4>
               <p class="mb-4">Make your app management easy and fun!</p>
 
               <form method="POST" action="<?= base_url()?>register/simpan" enctype="multipart/form-data">
@@ -168,7 +168,7 @@
 
               <p class="text-center">
                 <span>Already have an account?</span>
-                <a href="auth-login-basic.html">
+                <a href="<?= base_url()?>login">
                   <span>Sign in instead</span>
                 </a>
               </p>

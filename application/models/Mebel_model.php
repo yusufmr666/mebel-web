@@ -17,7 +17,7 @@ class Mebel_model extends CI_Model{
         redirect('dashboard');}
         else{
         $this->session->set_userdata($sess);
-        redirect('user/home');
+        redirect('home');
         }
         } else {
         $this->session->set_flashdata( "message", 
@@ -39,6 +39,13 @@ class Mebel_model extends CI_Model{
 
         function get_all_user(){
                 $hasil=$this->db->get('user');
+                return $hasil;
+        }
+
+        
+        function get_slider(){
+                $hasil=$this->db->get('produk');
+                $this->db->limit('3');
                 return $hasil;
         }
 
@@ -105,7 +112,6 @@ class Mebel_model extends CI_Model{
             }
         
             
-        
         function get_cart_byid($where){
         $this->db->select('*');
         $this->db->from('cart');
@@ -116,23 +122,27 @@ class Mebel_model extends CI_Model{
         return $hasil;
         }
 
-        function get_chart_byid($where){
+        function get_chart_byid(){
                 $this->db->select('*');
                 $this->db->from('cart');
                 $this->db->join('produk', 'produk.id_produk = cart.id_produk');
                 $this->db->join('user', 'user.id = cart.id_user');
-                $this->db->where('status', $where);
-                $this->db->limit('1');
+                $this->db->join('tukang', 'tukang.id = cart.id_admin','left');
+                $this->db->where('status', 'Pesan');
+                $this->db->or_where('status', 'Diproses');
+                $this->db->limit('5');
                 $this->db->order_by('tgl_pesan', 'ASC');
+                $this->db->group_by("id_transaksi");
                 $hasil=$this->db->get();
                 return $hasil;
                 }
 
-        function get_chart($id,$id_status){
+        function get_chart($id,$id_transaksi){
                 $this->db->select('*');
                 $this->db->from('cart');
                 $this->db->join('produk', 'produk.id_produk = cart.id_produk');
-                $this->db->where('status', $id_status);
+               // $this->db->where('status', $id_status);
+                $this->db->where('id_transaksi', $id_transaksi);
                 $this->db->where('id_user', $id);
                 $hasil=$this->db->get();
                 return $hasil;
@@ -147,6 +157,7 @@ class Mebel_model extends CI_Model{
                 $hasil=$this->db->get();
                 return $hasil;
                 }
+
         function get_user_chart($id){
                 $this->db->select('*');
                 $this->db->from('cart');
@@ -157,6 +168,15 @@ class Mebel_model extends CI_Model{
                 $hasil=$this->db->get();
                 return $hasil;
                 }  
+
+        function get_tukang_cart(){
+                $this->db->select('*');
+                $this->db->from('tukang');
+                $this->db->where('user_status', '1');
+                $this->db->limit('1');
+                $hasil=$this->db->get();
+                return $hasil;
+                }
 
                 
         function get_all_cartdata($table,$number,$offset){
@@ -193,9 +213,10 @@ class Mebel_model extends CI_Model{
                 $this->db->insert('cart',$data);
         }
 
-        function update_cart($id_user,$status,$id_transaksi){
+        function update_cart($id_user,$keterangan,$status,$id_transaksi){
                 $data = array(
                         'id_user'           => $id_user,
+                        'keterangan'          => $keterangan,
                         'status'          => $status,
                         'id_transaksi'          => $id_transaksi,
                       
@@ -213,9 +234,10 @@ class Mebel_model extends CI_Model{
 
 
 
-        function simpan_produk($nama,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3){
+        function simpan_produk($nama,$jenis,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3){
             $data = array(
                     'nama'  => $nama,
+                    'jenis'  => $jenis,
                     'estimasi'  => $estimasi,
                     'deskripsi' => $deskripsi,
                     'file_name1' => $file_name1,
@@ -225,9 +247,10 @@ class Mebel_model extends CI_Model{
             $this->db->insert('produk',$data);
         }
 
-        function update_produk($id,$nama,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3){
+        function update_produk($id,$nama,$jenis,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3){
                 $data = array(
                         'nama'  => $nama,
+                        'jenis'  => $jenis,
                         'estimasi' => $estimasi,
                         'deskripsi' => $deskripsi,
                         'file_name1' => $file_name1,

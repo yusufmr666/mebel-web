@@ -61,6 +61,7 @@ class Produk extends CI_Controller {
         $nama=$this->input->post('nama');
         $deskripsi=$this->input->post('deskripsi');
         $estimasi=$this->input->post('estimasi');
+        $jenis=$this->input->post('jenis');
 
 
         $config['upload_path'] = FCPATH.'./assets/img/produk/';
@@ -88,7 +89,7 @@ class Produk extends CI_Controller {
 		}
     
 
-            $this->mebel_model->simpan_produk($nama,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3); //simpan ke database
+            $this->mebel_model->simpan_produk($nama,$jenis,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3); //simpan ke database
             redirect('produk'); //redirect ke mahasiswa usai simpan data
     }
     public function edit() 
@@ -96,6 +97,7 @@ class Produk extends CI_Controller {
         $id=$this->input->post('id');
         $nama=$this->input->post('nama');
         $estimasi=$this->input->post('estimasi');
+        $jenis=$this->input->post('jenis');
         $deskripsi=$this->input->post('deskripsi');
 
         $data_kat = $this->mebel_model->get_produk_byid($id)->result();
@@ -135,7 +137,7 @@ class Produk extends CI_Controller {
 		}
     
 
-            $this->mebel_model->update_produk($id,$nama,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3); //simpan ke database
+            $this->mebel_model->update_produk($id,$nama,$jenis,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3); //simpan ke database
             redirect('produk'); //redirect ke mahasiswa usai simpan data
     }
 

@@ -32,7 +32,7 @@
 				<td><?= $row->nama?></td>
 				<td><?= rupiah($row->harga)?></td>
 				<td><?= $row->estimasi?> Minggu</td>
-				<td> <a class="badge sizes" href="<?= base_url('user/chart/delete/' . $row->id) ?>" onclick="return confirm('Apakah anda yakin ingin mengapus?')"><i class="material-icons"></i>Batalkan Pemesanan</a></td>
+				<td> <a class="badge" href="<?= base_url('user/chart/delete/' . $row->id) ?>" onclick="return confirm('Apakah anda yakin ingin mengapus?')"><i class="material-icons"></i>Batalkan Pemesanan</a></td>
 				</tr>
 				<input type="hidden" name="id" value="<?=$row->id?>"/>
 				<input type="hidden" name="idp" value="<?=$row->id_produk?>"/>  
@@ -41,11 +41,23 @@
 			</table>
 			<div class="text-right"> 
 			
+				<div class="row">
+					<div class="col-md-7 col-sm-4 text-center">
+						
+					</div>
+					<div class="col-md-5 col-sm-4 text-center">
+					<textarea
+					class="form-control"
+					id="exampleFormControlTextarea1" name="keterangan"
+					placeholder="Keterangan (Opsional)" required></textarea>
+					</div>
+				</div>
+			
 			<div class="row"> 
 				<input type="hidden" name="status" value="Pesan"/> 
-				<input type="hidden" name="id_transaksi" id="id_transaksi"/>                                
+				<input type="hidden" name="id_transaksi" id="id_transaksi"/>                             
 			</div>
-			<button type="submit"  onclick="getDate()" class="btn btn-primary">Checkout</button>
+			<button type="submit"  onclick="getDate()" class="btn btn-primary sizess">Checkout</button>
 			</div>
 			</form>
        		 </div> 
@@ -86,7 +98,7 @@
         
     </script>
 	<style>
-		.sizes{
-
+		.sizess{
+			margin-top: 25px;
 		}
 	</style>

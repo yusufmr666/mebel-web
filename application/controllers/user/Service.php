@@ -16,6 +16,7 @@ class Service extends CI_Controller {
 
 	public function index()
 	{
+        $data['id']= "Pesanan";
         $id_user = $this->session->userdata('id');
         $data['query'] = $this->mebel_model-> get_user_chart($id_user);
 
