@@ -25,16 +25,28 @@ class Service extends CI_Controller {
 		$this->load->view('user/templates/footer');
 	}
 
-    public function cart(){
-		if($this->session->userdata('level') != 'user') {
-			redirect('login');
-		}
-		$idp = $this->input->post('idp');
-        $id_user = $idx = $this->session->userdata('id');
-        $status = $this->input->post('status');
-		$id_transaksi = $this->input->post('id_transaksi');  
+    public function checkout(){
+        $id_transaksi=$this->input->post('id_transaksi');
+       
         
-        $this->mebel_model->update_cart($id_user,$status,$id_transaksi); //simpan ke database
-        redirect('user/chart'); //redirect ke mahasiswa usai simpan data
-	}
+        $config['upload_path'] = FCPATH.'./assets/img/bukti/';
+		$config['allowed_types'] = 'jpeg|jpg|png';
+        $config['max_size'] = 2000;
+  
+        $this->load->library('upload', $config);
+  
+		if(!empty($_FILES['bukti'])){
+			$this->upload->do_upload('bukti');
+			$uploaded_data1 = $this->upload->data();
+			$bukti = $uploaded_data1['file_name'];
+
+            $data = array(
+                'bukti'           => $bukti,
+            );            
+    
+            $this->mebel_model->update('cart','id_transaksi',$id_transaksi,$data);
+            redirect('user/service'); 
+		}
+        
+    }
 }

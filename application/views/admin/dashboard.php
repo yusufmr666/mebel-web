@@ -6,11 +6,11 @@
                       <thead>
                         <tr>
                           <th>Nama</th>
-                          <th>Tanggal Pembelian</th>
-                          
+                          <th>Tanggal Pembelian</th>            
                           <th>Status</th>
                           <th>Dikerjakan Oleh</th>
                           <th>Keterangan</th>
+                          <th>Pembayaran</th>
                           <th>Detail</th>
                           <th>Actions</th>
                         </tr>
@@ -35,10 +35,11 @@
                           <td><?= tgl_indonesia($row->tgl_pesan)?></td>          
                           <td><span class="badge <?php echo $pesan;?>"><?=$row->status?></span></td>
                           <td><?php if(empty($row->nama_tukang)){
-                              echo "Tukang Belum Terpilih";
+                              echo "Tukang Belum di Pilih";
                               } else { 
                               echo	$row->nama_tukang;}?></td>
                           <td><?=$row->keterangan?></td>
+                          <td><span><?php if(empty($row->bukti)){echo "Belum Lunas";} else {echo "Lunas";}?></span></td>
                           <td> <button type="button" class="btn btn-outline-info btn-sm" href="javascript:void(0);" data-bs-toggle="modal"
                           data-bs-target="#edit<?= $row->id_user?>">Detail </button></td>
                           <td>

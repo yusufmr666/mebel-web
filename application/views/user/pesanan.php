@@ -22,11 +22,12 @@
 				<th scope="col">Tanggal Pesan</th>				
 				<th scope="col">ID Transaksi</th>
 				<th scope="col">Link Pembayaran</th>
+				<th scope="col">Pembayaran</th>
                 <th scope="col">Status</th>
+				<th scope="col" width="2%">Konfirmasi</th>
 				</tr>
 			</thead>
 			<tbody>
-			<form method="POST" action="<?= base_url()?>user/chart/cart" enctype="multipart/form-data">
 				<?php foreach($query->result() as $row):
 					$status = $row->status;
 					if($status == 'Waiting' || $status == 'Pesan'){
@@ -47,16 +48,23 @@
 					echo "Menunggu";
 					} else { 
 					echo	$row->link;}?></td>
-			
+				<td><span><?php if(empty($row->bukti)){echo "Belum Lunas";} else {echo "Lunas";}?></span></td>
 				<td><span class="<?php echo $pesan;?>"><?=$row->status?></span></td>
-                
+
+				<form method="POST" action="<?= base_url()?>user/service/checkout" enctype="multipart/form-data">
+				<input type="hidden" name="id_transaksi" value="<?=$row->id_transaksi?>">
+				<td>
+					<input type="file" class="custom-file-input" id="validatedCustomFile" name="bukti" required>									
+				</td> 
+				<td><button type="submit" class="badge" 
+				<?php if(empty($row->link) || !empty($row->bukti)){ echo "disabled";}?>><i class="material-icons"></i>Konfiramsi</button></td>
+				</form>               
 				</tr>
 				<?php endforeach?>
 			</tbody>
 			</table>
 			<div class="text-right"> 
 			</div>
-			</form>
        		 </div> 
 			
 		</div>
@@ -119,5 +127,20 @@
 
 		.examplethree {
 		background-color: #14A44D;
+		}
+
+		input[type=file]::file-selector-button {
+		margin-right: 20px;
+		border: none;
+		background: #084cdf;
+		padding: 5px 10px;
+		border-radius: 10px;
+		color: #fff;
+		font-size: 10px;
+		cursor: pointer;
+		transition: background .2s ease-in-out;
+		}
+		input[type=file]::file-selector-button:hover {
+		background: #0d45a5;
 		}
 	</style>

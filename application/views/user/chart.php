@@ -49,7 +49,7 @@
 					<textarea
 					class="form-control"
 					id="exampleFormControlTextarea1" name="keterangan"
-					placeholder="Keterangan (Opsional)" required></textarea>
+					placeholder="Keterangan (Opsional)"></textarea>
 					</div>
 				</div>
 			
