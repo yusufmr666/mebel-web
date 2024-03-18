@@ -3,6 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="icon" href="<?=base_url()?>assets/images/logosdua.png">
 	<title>Anwar Jaya Funitur &mdash; <?=$id?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by gettemplates.co" />
@@ -71,7 +72,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-xs-2">
-					<div id="fh5co-logo"><a href="<?=base_url()?>home">Shop.</a></div>
+					<div id="fh5co-logo"><a href="<?=base_url()?>home"><img src="<?=base_url()?>assets/images/logos.png" width="125"></a></div>
 				</div>
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>

@@ -5,8 +5,8 @@
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t">
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Chart</h1>
-							<h2>Free html5 templates by <a href="https://themewagon.com/theme_tag/free/" target="_blank">Themewagon</a></h2>
+							<h1>Cart</h1>
+							<h2>Daftar Keranjang Anda</h2>
 						</div>
 					</div>
 				</div>
