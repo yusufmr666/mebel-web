@@ -48,7 +48,7 @@
 					echo "Menunggu";
 					} else { 
 					echo	$row->link;}?></td>
-				<td><span><?php if(empty($row->bukti)){echo "Belum Lunas";} else {echo "Lunas";}?></span></td>
+				<td><span class="<?php if(empty($row->bukti)){echo "badge examplefour";} else {echo "badge examplethree";}?>"><?php if(empty($row->bukti)){echo "Belum Lunas";} else {echo "Lunas";}?></span></td>
 				<td><span class="<?php echo $pesan;?>"><?=$row->status?></span></td>
 
 				<form method="POST" action="<?= base_url()?>user/service/checkout" enctype="multipart/form-data">
@@ -127,6 +127,10 @@
 
 		.examplethree {
 		background-color: #14A44D;
+		}
+
+		.examplefour{
+		background-color:#DC4C64;
 		}
 
 		input[type=file]::file-selector-button {
