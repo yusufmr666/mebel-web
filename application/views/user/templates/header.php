@@ -101,9 +101,11 @@
 						<li class=""><a href="<?= base_url()?>user/chart" class="cart"><span><small><?= $jmlcart?></small><i class="icon-shopping-cart"></i></span></a></li>
 						<li class="has-dropdown">
 							<a href="javascript:void(0);"> <?php if(!empty($this->session->userdata('username'))){ echo "Hi, ".$username."!" ;}?></a>
-							<ul class="dropdown">
-								<li><a href="<?=base_url()?>login/aksi_logout">Logout</a></li>
+							<?php if(!empty($this->session->userdata('username'))) {?>
+							<ul class="dropdown">								
+								<li><a href="<?=base_url()?>login/aksi_logout">Logout</a></li>								
 							</ul>
+							<?php } ?>
 						</li>
 					</ul>
 				</div>

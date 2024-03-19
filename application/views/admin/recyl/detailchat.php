@@ -3,11 +3,10 @@
 <link href="<?= base_url() ?>/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
 
 <header class="page-header">
-<title>Anwar Jaya Funitur &mdash; <?=$id?></title>
-  <div class="container ">
+<div class="container ">
         <div class="row">
         <div class="col-md-1">
-        <a type="button" class="btn btn-success" href="<?=base_url()?>home">Back</a>
+        <a type="button" class="btn btn-success" href="<?= base_url()?>admin/chat">Back</a>
         </div>
         <div class="col-md-10 text-center">
             <h2><?= $name?></h2>
@@ -20,9 +19,9 @@
     <div class="chat-log">
     <?php foreach ($datas as $no => $kel) : ?>
       <?php
-        if ($kel['id_level'] == 'admin') {?>
+        if ($kel['id_level'] !== 'admin') {?>
       <div class="chat-log__item">
-        <h3 class="chat-log__author">admin <small><?= date('h:i a', strtotime($kel['date']))?></small></h3>
+        <h3 class="chat-log__author"><?=$kel['username']?> <small><?= date('h:i a', strtotime($kel['date']))?></small></h3>
         <div class="chat-log__message"><?= $kel['faq']?></div>
       </div>
       <?php } else {?>
@@ -37,9 +36,14 @@
   </div>
   <div class="chat-form">
     <div class="container ">
-      <form class="form-horizontal" action="<?= base_url("user/chat/add")?>" method="post">
+      <form class="form-horizontal" action="<?= base_url("admin/chat/add")?>" method="post">
         <div class="row">
           <div class="col-sm-11 col-xs-8">
+            <?php foreach ($datas as $no => $kel) : ?>
+                <input type="hidden" name="id_faq" value="<?=$kel['id_faq']?>">              
+            <?php endforeach?>
+            <input type="hidden" name="id_status" value="2">
+            <input type="hidden" name="id_status_user" value="">
             <input type="text" name="faq" class="form-control" id="" placeholder="Message" />
           </div>
           <div class="col-sm-1 col-xs-4">

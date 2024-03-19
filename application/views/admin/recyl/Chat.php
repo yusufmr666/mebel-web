@@ -68,6 +68,15 @@ class Chat extends CI_Controller {
 
         $faq = $this->input->post('faq');
         $id_faq = $this->input->post('id_faq');
+        $id_status = $this->input->post('id_status');
+        $id_status_user = $this->input->post('id_status_user');
+
+        $query = $this->db->query("SELECT * FROM faqone Join user on user.id = faqone.id_user WHERE id_faq='$id_faq' and id_level ='user' ORDER BY date ASC")->result();
+        
+        foreach ($query as $kel){
+            $id_admin = $kel->id_user;
+        }
+
         $id_user = $this->session->userdata('id');
         $id_level = $this->session->userdata('level');
 
@@ -75,29 +84,37 @@ class Chat extends CI_Controller {
             'id_user' => $id_user,
             'id_faq' => $id_faq,
             'id_level' => $id_level,
+            'id_status' => $id_status,
             'faq' => $faq,
             );
 
-            $this->mebel_model->insert_data($data,'faqone');
-		    
-            $this->session->set_flashdata(
-                "message", 
-                '<div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                    Berhasil menambahkan data!.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>'
+        $datas = array (
+            'id_status' => $id_status_user,        
             );
-            redirect('admin/chat');
+
+        //$this->mebel_model->insert_data($data,'faqone');
+        //$this->mebel_model->updates('faqone','id_faq',$id_faq,$datas,$id_admin);
+        
+        $this->session->set_flashdata(
+            "message", 
+            '<div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                Berhasil menambahkan data!.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>'
+        );
+        redirect('admin/chat');
 
     }
 
     public function detail($id_faq){
         $name = "yusufmr";
         $username = $this->session->userdata('username');
+        $query = $this->db->query("SELECT * FROM faqone Join user on user.id = faqone.id_user WHERE id_faq='$id_faq' ORDER BY date ASC")->result_array();
+
         $data = [
             'name' => $username,
             'page' => "profile",
-            'datas' => $this->db->query("SELECT * FROM faqone Join user on user.id = faqone.id_user WHERE id_faq='$id_faq' ORDER BY date ASC")->result_array(),
+            'datas' => $query,
         ];
         
 		$this->load->view('admin/detailchat', $data);

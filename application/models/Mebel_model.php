@@ -232,6 +232,14 @@ class Mebel_model extends CI_Model{
                 $this->db->update($table,$data);
         }
 
+        
+        function updates($table,$id,$id_user,$data,$id_admin){
+
+                $this->db->where($id, $id_user);
+                $this->db->where('id_user', $id_admin);
+                $this->db->update($table,$data);
+        }
+
 
 
         function simpan_produk($nama,$jenis,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3){
