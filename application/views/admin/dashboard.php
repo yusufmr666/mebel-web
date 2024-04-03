@@ -220,12 +220,12 @@
                   return false;
                 })
 
-                var times = 100;   //Here put the number of times you want to auto submit
+                var times = 100;   
                 (function submit(){
                   if(times == 0) return;
                   form.submit();
                   times--;
-                  setTimeout(submit, 1000);   //Each second
+                  setTimeout(submit, 1000);
                 })(); 
               }
               </script>

@@ -35,9 +35,12 @@ class Dashboard extends CI_Controller {
         $id_transaksi = $this->input->post('id_transaksi');
         $user_status=$this->input->post('user_status');
         $id_admin = $this->input->post('id_admin');
+        $link = $this->input->post('link');
+
 
         $data = array(
             'status'           => $status,
+            'link'           => $link,
         );
         
         $this->mebel_model->update('cart','id_transaksi',$id_transaksi,$data);
