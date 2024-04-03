@@ -3,6 +3,7 @@
 <link href="<?= base_url() ?>/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
 
 <header class="page-header">
+<title>Anwar Jaya Funitur &mdash; Chat</title>
 <div class="container ">
         <div class="row">
         <div class="col-md-1">
@@ -42,6 +43,8 @@
             <?php foreach ($datas as $no => $kel) : ?>
                 <input type="hidden" name="id_faq" value="<?=$kel['id_faq']?>">
             <?php endforeach?>
+            <input type="hidden" name="id_status" value="2">
+            <input type="hidden" name="id_status_user" value="">
             <input type="text" name="faq" class="form-control" id="" placeholder="Message" />
           </div>
           <div class="col-sm-1 col-xs-4">

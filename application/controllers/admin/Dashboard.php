@@ -38,6 +38,18 @@ class Dashboard extends CI_Controller {
 
         $data = array(
             'status'           => $status,
+        );
+        
+        $this->mebel_model->update('cart','id_transaksi',$id_transaksi,$data);
+        redirect('dashboard'); 
+    }
+
+    public function alg(){
+        $id_transaksi = $this->input->post('id_transaksi');
+        $user_status=$this->input->post('user_status');
+        $id_admin = $this->input->post('id_admin');
+
+        $data = array(
              'id_admin'           => $id_admin,
         );
 

@@ -35,7 +35,18 @@
                           <td><?= tgl_indonesia($row->tgl_pesan)?></td>          
                           <td><span class="badge <?php echo $pesan;?>"><?=$row->status?></span></td>
                           <td><?php if(empty($row->nama_tukang)){
-                              echo "Tukang Belum di Pilih";
+                              echo "Tunggu...";
+                              ?>
+                              <form method="POST" action="<?= base_url()?>admin/dashboard/alg" enctype="multipart/form-data">                               
+                                <input type="hidden" name="user_status" value="2">
+                                <input type="hidden" name="id_transaksi" value="<?=$row->id_transaksi?>">
+                                <?php
+                                    foreach($tukang->result() as $rows) { ?>
+                                    <input type="hidden" name="id_admin" value="<?=$rows->id?>">
+                                  <?php } ?>
+                                <button type="button" id="clickButton" class="btn btn-sm  btn-success visually-hidden" href="javascript:void(0);"></button>  
+                              </form> 
+                              <?php
                               } else { 
                               echo	$row->nama_tukang;}?></td>
                           <td><?=$row->keterangan?></td>
@@ -46,12 +57,7 @@
                             <?php if($row->status == "Pesan"){?>
                           <form method="POST" action="<?= base_url()?>admin/dashboard/order" enctype="multipart/form-data">
                             <input type="hidden" name="status" value="Diproses">
-                            <input type="hidden" name="user_status" value="2">
                             <input type="hidden" name="id_transaksi" value="<?=$row->id_transaksi?>">
-                            <?php
-                                foreach($tukang->result() as $rows) { ?>
-                                <input type="hidden" name="id_admin" value="<?=$rows->id?>">
-                              <?php } ?>
                             <button type="button" class="btn btn-sm  btn-success" href="javascript:void(0);" data-bs-toggle="modal"
                             data-bs-target="#fix<?= $row->id_transaksi?>">Proses</button>  
                               <!--
@@ -93,7 +99,7 @@
                               </div>
                               <div class="modal-body">
                             
-                              <form method="POST" action="<?= base_url()?>admin/dashboard/checkout" enctype="multipart/form-data">
+                              <form method="POST" action="<?= base_url()?>admin/dashboard/order" enctype="multipart/form-data">
                           
                               <?php foreach($this->mebel_model->get_chart($row->id_user,$row->id_transaksi)->result() as $rows):?>
                                 <input type="hidden" name="status" value="Diproses">
@@ -204,3 +210,22 @@
                   return $result = $Hari[$hari].", ".$tgl." ".$Bulan[(int)$bulan-1]." ".$tahun." ";
                 }
               ?>
+              
+              <script>
+                window.onload = function(){
+                var button = document.getElementById('clickButton'),
+                  form = button.form;
+
+                form.addEventListener('submit', function(){
+                  return false;
+                })
+
+                var times = 100;   //Here put the number of times you want to auto submit
+                (function submit(){
+                  if(times == 0) return;
+                  form.submit();
+                  times--;
+                  setTimeout(submit, 1000);   //Each second
+                })(); 
+              }
+              </script>

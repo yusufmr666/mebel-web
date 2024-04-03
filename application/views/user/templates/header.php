@@ -82,13 +82,23 @@
 						<li class="has-dropdown">
 							<a href="<?= base_url()?>user/service">Pesanan</a>
 						</li>
-						<li><a href="<?=base_url()?>user/chat">Chat</a></li>
+						<?php
+						$id_user = $this->session->userdata('id');
+						$datachat = $this->db->query("SELECT * FROM faqone WHERE id_user='$id_user'")->result();
+						foreach($datachat as $dtc){
+							$id_faq = $dtc->id_faq;
+						}
+						if(!empty($id_faq)){
+							$jmlchat = $this->db->query("SELECT * FROM faqone WHERE id_level='admin' and id_status='2' and id_faq='$id_faq'")->num_rows();
+						}
+						?>
+						<li class=""><a href="<?=base_url()?>user/chat" class="cart">Chat<span><small><?php if(empty($jmlchat)){echo "0";} else { echo $jmlchat;}?></small><i class=""></i></span></a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
 					<ul>
 						<?php
-						$id_user = $this->session->userdata('id');
+						//$id_user = $this->session->userdata('id');
 						$username = $this->session->userdata('username');
 						$cart = $this->mebel_model->get_cart_byid($id_user)->num_rows();
 						if($cart == 0){

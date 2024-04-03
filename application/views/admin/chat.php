@@ -14,8 +14,11 @@
                         <tr>
                         <?php foreach($query->result() as $row):?>
                           <td>
+                            <?php 
+                            $jmlchat = $this->db->query("SELECT * FROM faqone WHERE id_user='$row->id_user' and id_status='2' and id_faq='$row->id_faq'")->num_rows();
+                            ?>
                             <i class="mdi mdi-bank mdi-20px text-primary me-3"></i
-                            ><span class="fw-medium"><?= $row->username?></span>
+                            ><span class="fw-medium"><?= $row->username?></span> <span class="badge badge-center rounded-pill bg-danger"><?=$jmlchat?></span>
                           </td>
                           <!--
                           <td><?=$row->harga?></td>

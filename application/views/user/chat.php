@@ -40,6 +40,11 @@
       <form class="form-horizontal" action="<?= base_url("user/chat/add")?>" method="post">
         <div class="row">
           <div class="col-sm-11 col-xs-8">
+            <?php foreach ($datas as $no => $kel) : ?>
+                <input type="hidden" name="id_faq" value="<?=$kel['id_faq']?>">
+            <?php endforeach?>
+            <input type="hidden" name="id_status" value="2">
+            <input type="hidden" name="id_status_user" value="">
             <input type="text" name="faq" class="form-control" id="" placeholder="Message" />
           </div>
           <div class="col-sm-1 col-xs-4">
