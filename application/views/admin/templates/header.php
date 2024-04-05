@@ -110,7 +110,10 @@
                 href="<?=base_url()?>chat"
                 class="menu-link">
                 <i class="menu-icon tf-icons mdi mdi-message-outline"></i>
-                <div data-i18n="Kanban">Chat</div>
+                <?php 
+                   $jmlchat = $this->db->query("SELECT * FROM faqone WHERE id_level='user' and id_status='2'")->num_rows();
+                ?>
+                <div data-i18n="Kanban">Chat</div> &nbsp; <span class="badge badge-center rounded-pill bg-danger"> <?=$jmlchat?></span>
                
               </a>
             </li>

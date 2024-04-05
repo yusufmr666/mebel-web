@@ -63,7 +63,7 @@
             
             <div class="card-body mt-2">
               <h4 class="mb-2">starts here 🚀</h4>
-              <p class="mb-4">Make your app management easy and fun!</p>
+              <p class="mb-4">Anwar Jaya Funitur!</p>
 
               <form method="POST" action="<?= base_url()?>register/simpan" enctype="multipart/form-data">
                 <div class="form-floating form-floating-outline mb-3">
@@ -96,7 +96,10 @@
                   </div>
                 </div>
                 <input type="hidden" name="level" value="user">
-                <button class="btn btn-primary d-grid w-100">Sign up</button>
+                <div class="mb-3">
+                 <button class="btn btn-primary d-grid w-100" type="submit">Sign up</button>
+                </div>
+                
               </form>
 
               <p class="text-center">

@@ -117,6 +117,9 @@
 							</ul>
 							<?php } ?>
 						</li>
+						<?php if(empty($this->session->userdata('username'))){?>
+						<li><p><a href="<?=base_url()?>login">Login</a></p></li>
+						<?php } ?>
 					</ul>
 				</div>
 			</div>
