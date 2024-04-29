@@ -39,7 +39,7 @@
 						<div class="item">
 							<div class="active text-center">
 								<figure>
-									<img src="<?php echo base_url().'assets/img/produk/'.$row->file_name1;?>" alt="user">
+									<img src="<?php echo base_url().'assets/img/produk/'.$row->file_name3;?>" alt="user">
 								</figure>
 							</div>
 						</div>
