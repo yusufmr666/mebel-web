@@ -4,7 +4,7 @@
 		<div class="flexslider js-fullheight">
 			<ul class="slides">
 			<?php foreach($slider->result() as $row):?>
-		   	<li style="background-image: url(<?php echo base_url().'assets/img/produk/'.$row->file_name1;?>">
+		   	<li style="background-image: url(<?php echo base_url().'assets/img/produk/'.$row->file_name1;?>)">
 		   		<div class="overlay-gradient"></div>
 		   		<div class="container">
 		   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
@@ -75,7 +75,7 @@
 			<?php foreach($produk->result() as $row):?>
 				<div class="col-md-4 text-center animate-box">
 					<div class="product">
-						<div class="product-grid" style="background-image:url(<?php echo base_url().'assets/img/produk/'.$row->file_name1;?>">
+						<div class="product-grid" style="background-image:url(<?php echo base_url().'assets/img/produk/'.$row->file_name1;?>)">
 							<div class="inner">
 								<p>
 									<a href="javascript:void(0);" class="icon" data-toggle="modal" data-target="#add<?= $row->id_produk?>"><i class="icon-shopping-cart"></i></a>

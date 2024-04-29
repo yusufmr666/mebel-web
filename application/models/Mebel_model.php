@@ -242,9 +242,10 @@ class Mebel_model extends CI_Model{
 
 
 
-        function simpan_produk($nama,$jenis,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3){
+        function simpan_produk($nama,$harga,$jenis,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3){
             $data = array(
                     'nama'  => $nama,
+                    'harga'  => $harga,
                     'jenis'  => $jenis,
                     'estimasi'  => $estimasi,
                     'deskripsi' => $deskripsi,
@@ -255,9 +256,10 @@ class Mebel_model extends CI_Model{
             $this->db->insert('produk',$data);
         }
 
-        function update_produk($id,$nama,$jenis,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3){
+        function update_produk($id,$nama,$harga,$jenis,$estimasi,$deskripsi,$file_name1,$file_name2,$file_name3){
                 $data = array(
                         'nama'  => $nama,
+                        'harga'  => $harga,
                         'jenis'  => $jenis,
                         'estimasi' => $estimasi,
                         'deskripsi' => $deskripsi,

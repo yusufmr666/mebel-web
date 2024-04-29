@@ -54,7 +54,7 @@
                     </table>
                     <div class="halaman my-5"><?php echo $halaman;?></div>
                   </div>
-                  <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+                      <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
