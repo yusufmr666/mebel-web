@@ -137,10 +137,26 @@ class Mebel_model extends CI_Model{
                 return $hasil;
                 }
 
+                
+        function get_chart_byids(){
+                $this->db->select('*');
+                $this->db->from('cart');
+                $this->db->join('produk', 'produk.id_produk = cart.id_produk');
+                $this->db->join('user', 'user.id = cart.id_user');
+                $this->db->join('tukang', 'tukang.id = cart.id_admin','left');
+                $this->db->or_where('status', 'Diproses');
+                //$this->db->limit('5');
+                $this->db->order_by('tgl_pesan', 'ASC');
+                $this->db->group_by("id_transaksi");
+                $hasil=$this->db->get();
+                return $hasil;
+                }
+
         function get_chart($id,$id_transaksi){
                 $this->db->select('*');
                 $this->db->from('cart');
                 $this->db->join('produk', 'produk.id_produk = cart.id_produk');
+                $this->db->join('tukang', 'tukang.id = cart.id_admin','left');
                // $this->db->where('status', $id_status);
                 $this->db->where('id_transaksi', $id_transaksi);
                 $this->db->where('id_user', $id);
@@ -310,5 +326,41 @@ class Mebel_model extends CI_Model{
                 $hasil=$this->db->get();
                 return $hasil;
         }
+
+        function getItemRating($itemId){
+		$query = $this->db->query("SELECT r.ratingId, r.itemId, r.userId, u.username, r.ratingNumber, r.title,
+                r.comments, r.created, r.modified FROM item_rating AS r 
+                LEFT JOIN user AS u ON r.userid = u.id WHERE r.itemId = '$itemId'");	
+		return $query->result_array();
+                ;		
+	}
+
+        public function getRatingAverage($itemId){
+		$itemRating = $this->getItemRating($itemId);
+		$ratingNumber = 0;
+		$count = 0;		
+		foreach($itemRating as $itemRatingDetails){
+			$ratingNumber+= $itemRatingDetails['ratingNumber'];
+			$count += 1;			
+		}
+		$average = 0;
+		if($ratingNumber && $count) {
+			$average = $ratingNumber/$count;
+		}
+		return $average;	
+	}
+
+        function simpan_rating($id_produk,$id_user,$rating,$title,$comment){
+                $data = array(
+                        'itemId'  => $id_produk,
+                        'userId'  => $id_user,
+                        'ratingNumber'  => $rating,
+                        'title'  => $title,
+                        'comments' => $comment,
+                        'created' => date("Y-m-d H:i:s"), 
+                        'modified' => date("Y-m-d H:i:s"),
+                );
+                $this->db->insert('item_rating',$data);
+            }
 
 }

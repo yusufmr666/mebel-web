@@ -86,4 +86,26 @@ class Dashboard extends CI_Controller {
         $this->mebel_model->update('cart','id_transaksi',$id_transaksi,$data);
         redirect('dashboard'); 
     }
+
+        public function print()
+        {
+            // panggil library yang kita buat sebelumnya yang bernama pdfgenerator
+            $this->load->library('pdfgenerator');
+            
+            // title dari pdf
+            $this->data['title_pdf'] = 'Laporan Pemesanan AJF';
+            $this->data['wait'] =  $this->mebel_model->get_chart_byid();
+            
+            // filename dari pdf ketika didownload
+            $file_pdf = 'laporan_pemesanan_AJF';
+            // setting paper
+            $paper = 'A4';
+            //orientasi paper potrait / landscape
+            $orientation = "portrait";
+            
+            $html = $this->load->view('admin/cetak_laporan',$this->data, true);	    
+            
+            // run dompdf
+            $this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
+        }
 }

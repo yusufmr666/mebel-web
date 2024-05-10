@@ -72,7 +72,9 @@
 				</div>
 			</div>
 			<div class="row">
-			<?php foreach($produk->result() as $row):?>
+			<?php foreach($produk->result() as $row):
+				$average = $this->mebel_model->getRatingAverage($row->id_produk);
+				?>
 				<div class="col-md-4 text-center animate-box">
 					<div class="product">
 						<div class="product-grid" style="background-image:url(<?php echo base_url().'assets/img/produk/'.$row->file_name1;?>)">
@@ -81,9 +83,10 @@
 									<a href="javascript:void(0);" class="icon" data-toggle="modal" data-target="#add<?= $row->id_produk?>"><i class="icon-shopping-cart"></i></a>
 								</p>
 							</div>
-						</div>
+						</div>					
 						<div class="desc">
 							<h3><a href="<?= base_url('home/detail/' . $row->id_produk) ?>"><?=$row->nama?></a></h3>
+							<div><span class="badge"><?php printf('%.1f', $average); ?> <small>/ 5</small></span> <span class="rating-reviews"><a> Ratings</a></span></div>
 							<span class="price"><?= rupiah($row->harga)?></span>
 						</div>
 					</div>
@@ -133,7 +136,6 @@
 	   
 	  }
 	?>
-
 
 	
 

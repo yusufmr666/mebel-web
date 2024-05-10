@@ -1,5 +1,18 @@
 <div class="card">
-                <h5 class="card-header">Table <?=$id?></h5>
+              <div class="row">
+                <div class="col-sm-9" >
+                  <h5 class="card-header">Table <?=$id?></h5>
+                </div>
+                <div class="col-sm-3 mt-3">
+                  <a
+                    
+                    href="<?= base_url()?>admin/dashboard/print"
+                    target="_blank"
+                    class="btn btn-primary float-end me-3">
+                    Cetak Data
+                  </a>
+                </div>
+              </div>                              
                 <div class="card-body">
                   <div class="table-responsive text-nowrap">
                     <table class="table table-bordered">
