@@ -43,7 +43,7 @@
                         
                           <td>
                             <i class="mdi mdi-bank mdi-20px text-primary me-3"></i
-                            ><span class="fw-medium"><?= $row->username?></span>
+                            ><span class="fw-medium"><?= $row->id_transaksi?></span>
                           </td>
                           <td><?= tgl_indonesia($row->tgl_pesan)?></td>          
                           <td><span class="badge <?php echo $pesan;?>"><?=$row->status?></span></td>
@@ -65,7 +65,7 @@
                           <td><?=$row->keterangan?></td>
                           <td><span><?php if(empty($row->bukti)){echo "Belum Lunas";} else {echo "Lunas";}?></span></td>
                           <td> <button type="button" class="btn btn-outline-info btn-sm" href="javascript:void(0);" data-bs-toggle="modal"
-                          data-bs-target="#edit<?= $row->id_user?>">Detail </button></td>
+                          data-bs-target="#edit<?= $row->id_transaksi?>">Detail </button></td>
                           <td>
                             <?php if($row->status == "Pesan"){?>
                           <form method="POST" action="<?= base_url()?>admin/dashboard/order" enctype="multipart/form-data">
@@ -150,7 +150,7 @@
                         <?php endforeach?>
 
                         <?php foreach($query->result() as $row):?>
-                        <div class="modal fade" id="edit<?= $row->id_user?>" tabindex="-1" aria-hidden="true">
+                        <div class="modal fade" id="edit<?= $row->id_transaksi?>" tabindex="-1" aria-hidden="true">
                           <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
