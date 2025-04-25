@@ -31,7 +31,7 @@ class Service extends CI_Controller {
         
         $config['upload_path'] = FCPATH.'./assets/img/bukti/';
 		$config['allowed_types'] = 'jpeg|jpg|png';
-        $config['max_size'] = 2000;
+        $config['max_size'] = 5000;
   
         $this->load->library('upload', $config);
   

@@ -58,10 +58,11 @@ class Mebel_model extends CI_Model{
                 return $hasil;
                 }
         
-        function simpan_user($email,$username,$password,$level){
+        function simpan_user($email,$username,$no_hp,$password,$level){
                 $data = array(
                         'email'          => $email,
                         'username'       => $username,
+                        'no_hp'       => $no_hp,
                         'password'       => $password,
                         'level'       => $level
                 );
@@ -229,12 +230,13 @@ class Mebel_model extends CI_Model{
                 $this->db->insert('cart',$data);
         }
 
-        function update_cart($id_user,$keterangan,$status,$id_transaksi){
+        function update_cart($id_user,$keterangan,$status,$id_transaksi,$jenis_pembayaran){
                 $data = array(
                         'id_user'           => $id_user,
                         'keterangan'          => $keterangan,
-                        'status'          => $status,
+                        'status'          => $status,                       
                         'id_transaksi'          => $id_transaksi,
+                        'jenis_pembayaran'          => $jenis_pembayaran,
                       
                 );
                 $this->db->where('id_user', $id_user);
@@ -362,5 +364,16 @@ class Mebel_model extends CI_Model{
                 );
                 $this->db->insert('item_rating',$data);
             }
+
+
+            
+        function get_user_trans($id){
+                $this->db->select('*');
+                $this->db->from('cart');              
+                $this->db->where('id_transaksi', $id);
+                $this->db->group_by("id_transaksi");            
+                $hasil=$this->db->get();
+                return $hasil;
+                }  
 
 }

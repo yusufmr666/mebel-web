@@ -33,9 +33,10 @@ class Chart extends CI_Controller {
         $id_user = $idx = $this->session->userdata('id');
         $keterangan = $this->input->post('keterangan');
         $status = $this->input->post('status');
+        $jenis_pembayaran = $this->input->post('jenis_pembayaran');
 		$id_transaksi = $this->input->post('id_transaksi');  
         
-        $this->mebel_model->update_cart($id_user,$keterangan,$status,$id_transaksi); //simpan ke database
+        $this->mebel_model->update_cart($id_user,$keterangan,$status,$id_transaksi,$jenis_pembayaran); //simpan ke database
         redirect('user/chart'); //redirect ke mahasiswa usai simpan data
 	}
 

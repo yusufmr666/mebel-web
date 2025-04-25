@@ -20,10 +20,11 @@ class Register extends CI_Controller {
     public function simpan(){
         $email=$this->input->post('email');
         $username=$this->input->post('username');
+        $no_hp=$this->input->post('no_hp');
         $password = md5($this->input->post('password'));
         $level=$this->input->post('level');
        
-        $this->mebel_model->simpan_user($email,$username,$password,$level); //simpan ke database
+        $this->mebel_model->simpan_user($email,$username,$no_hp,$password,$level); //simpan ke database
         redirect('login'); //redirect ke mahasiswa usai simpan data
     }
 

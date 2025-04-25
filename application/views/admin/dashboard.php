@@ -39,6 +39,13 @@
                         } else {
                           $pesan = 'bg-label-warning';
                         }
+
+                        if(empty($row->bukti)){
+                          $bukti1 = "disabled";
+                        } else {
+                          $bukti1 = "";
+                        }
+
                         ?>
                         
                           <td>
@@ -84,7 +91,7 @@
                             <input type="hidden" name="id_admin" value="<?=$row->id_admin?>">
                             <input type="hidden" name="id_transaksi" value="<?=$row->id_transaksi?>">
                            
-                          <button type="submit" class="btn  btn-sm  btn-success <?php if($row->status == "Pesan"){ echo "visually-hidden";}?>">Kirim</button>
+                          <button type="submit" class="btn  btn-sm  btn-success <?php if($row->status == "Pesan"){ echo "visually-hidden";}?>" <?= $bukti1?>>Kirim</button>
                                <!-- 
                           <button type="button" class="btn btn-outline-info btn-sm" href="javascript:void(0);" data-bs-toggle="modal"
                           data-bs-target="#fix<?= $row->id_transaksi?>">Detail </button>  
@@ -103,7 +110,7 @@
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel1">Proses Pesanan</h4>
+                                <h4 class="modal-title" id="exampleModalLabel1">-- Pesanan</h4>
                                 <button
                                   type="button"
                                   class="btn-close"
@@ -121,23 +128,31 @@
                                 <?php
                                     foreach($tukang->result() as $rowa) { ?>
                                     <input type="hidden" name="id_admin" value="<?=$rowa->id?>">
-                                  <?php } ?>                        
-                                <!--  
-                                <input type="text" name="status" value="Dikirim">
-                                  <input type="text" name="user_status" value="1">
-                                  <input type="text" name="id_admin" value="<?=$rows->id_admin?>">
-                                  <input type="text" name="id_transaksi" value="<?=$rows->id_transaksi?>">
-                                -->
+                                  <?php } ?>                 
+        
+                                  <div class="mb-4" >
+                                  <label for="name">Jenis Pembayaran</label>
+                                  <div class="form-floating form-floating-outline">                             
+                                    <p><?=$rows->jenis_pembayaran?></p>                                     
+                                    </div>
+                                  </div>
+                                  <?php if($rows->jenis_pembayaran == "Transfer"){
+                                     $bukti = "disabled";
+                                    } else {
+                                      $bukti = "";
+                                    }?>
+                               
                                   <?php endforeach ?>
                                   <div class="mb-4" >
+                                  
                                   <div class="form-floating form-floating-outline">
-                                      <input type="text" id="nameBasic" class="form-control" name="link" placeholder="Link Pembayaran" required/>
+                                      <input type="text" id="nameBasic" class="form-control" name="link" placeholder="Link Pembayaran" required <?=$bukti?>/>
                                       <label for="name">Link Pembayaran</label>
                                     </div>
                                   </div>
                                   <div class="modal-footer">
-                                <button type="submit" class="btn btn-sm  btn-success" data-bs-dismiss="modal">
-                                  Kirim
+                                <button type="submit" class="btn btn-sm  btn-success" data-bs-dismiss="modal" >
+                                  Proses
                                 </button>
                                 </div>                  
                               </form>
@@ -189,12 +204,28 @@
                                     } else {
                                       $pesan = 'bg-label-warning';
                                     }
-                                    echo $pesan;?>"><?=$row->status?></span></td>
+                                    echo $pesan;
+                                    if(empty($row->bukti)){
+                                      $bukti2 = "d-none";
+                                    } else {
+                                      $bukti2 = $row->bukti;
+                                    }
+                                    ?>"><?=$row->status?></span></td>
                                   </tr>
-                                  <?php endforeach?>
+                                
                                 </tbody>
                               </table>
+                              
+                                <div class="mt-4 <?=$bukti2?>" >
+                                  <label for="name">Bukti Transfer</label>
+                                  <div class="form-floating form-floating-outline">                             
+                                     <img  class="img-fluid mt-4"  src="<?=base_url()?>assets/img/bukti/<?=$row->bukti?>" class="mx-auto d-block">
+                                     
+                                    </div>
+                                  </div>
                                 </div>
+
+                                <?php endforeach?>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">

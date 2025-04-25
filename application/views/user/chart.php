@@ -40,7 +40,25 @@
 			</tbody>
 			</table>
 			<div class="text-right"> 
-			
+				<div class="row mb-40">				
+						<div class="form-group">
+						<label class="control-label col-sm-6"for="username"></label>
+						<div class="col-sm-6">
+						<select class="form-control" name="jenis_pembayaran" aria-label="Default select example">
+							<option selected>Pilih Jenis Pembayaran</option>
+							<option value="Transfer">Transfer</option>
+							<option value="Pihak Ketiga">Pihak Ketiga</option>
+					
+							<!--
+							<option value="Photography">Photography</option>
+							<option value="Education">Education</option>
+							-->
+							</select>
+						</div>
+					</div>
+
+				</div>
+
 				<div class="row">
 					<div class="col-md-7 col-sm-4 text-center">
 						
@@ -53,13 +71,13 @@
 					</div>
 				</div>
 			
-			<div class="row"> 
-				<input type="hidden" name="status" value="Pesan"/> 
-				<input type="hidden" name="id_transaksi" id="id_transaksi"/>                             
-			</div>
-			<button type="submit"  onclick="getDate()" class="btn btn-primary sizess">Checkout</button>
-			</div>
-			</form>
+				<div class="row"> 
+					<input type="hidden" name="status" value="Pesan"/> 
+					<input type="hidden" name="id_transaksi" id="id_transaksi"/>                             
+				</div>
+				<button type="submit"  onclick="getDate()" class="btn btn-primary sizess">Checkout</button>
+				</div>
+				</form>
        		 </div> 
 			
 		</div>
@@ -100,5 +118,35 @@
 	<style>
 		.sizess{
 			margin-top: 25px;
+		}
+		/* Menambahkan margin-bottom pada elemen tertentu */
+		.mb-10 {
+			margin-bottom: 10px;
+		}
+
+		.mb-20 {
+			margin-bottom: 20px;
+		}
+
+		.mb-30 {
+			margin-bottom: 30px;
+		}
+
+		.mb-40 {
+			margin-bottom: 40px;
+		}
+
+		.mb-50 {
+			margin-bottom: 50px;
+		}
+
+		/* Menambahkan margin-bottom pada elemen tertentu dengan class mb-auto */
+		.mb-auto {
+			margin-bottom: auto;
+		}
+
+		/* Atau untuk pengaturan margin-bottom secara umum */
+		[class*="mb-"] {
+			margin-bottom: 15px; /* Atur nilai sesuai kebutuhan */
 		}
 	</style>

@@ -15,8 +15,9 @@
                       <thead>
                         <tr>
                           <th>Nama</th>
-                          <th>Harga</th>
-                          <th>Deskripsi</th>
+                          <th>Email</th>
+                          <th>No Handphone</th>
+                          <th>Level</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
@@ -28,6 +29,7 @@
                             ><span class="fw-medium"><?= $row->username?></span>
                           </td>
                           <td><?=$row->email?></td>
+                          <td><?=$row->no_hp?></td>
                           <td><?=$row->level?></td>
                           <td>
                             <div class="dropdown">
@@ -84,6 +86,12 @@
                                   <div class="form-floating form-floating-outline mb-3">
                                     <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" />
                                     <label for="email">Email</label>
+                                  </div>
+                                  </div>
+                                  <div class="mb-4">
+                                  <div class="form-floating form-floating-outline mb-3">
+                                    <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Enter your Handphone Number" />
+                                    <label for="text">No Hnadphone</label>
                                   </div>
                                   </div>
                                   <div class="mb-4">

@@ -21,7 +21,8 @@
 				<tr>
 				<th scope="col">Tanggal Pesan</th>				
 				<th scope="col">ID Transaksi</th>
-				<th scope="col">Link Pembayaran</th>
+				<th scope="col">Jenis Pembayaran</th>
+				<th scope="col">Link / No Rek. Pembayaran</th>
 				<th scope="col">Pembayaran</th>
                 <th scope="col">Status</th>
 				<th scope="col" width="2%">Konfirmasi</th>
@@ -44,7 +45,8 @@
 					echo "ID Transaksi Belum Ada";
 					} else { 
 					echo	$row->id_transaksi;}?></td>
-					 <td><?php if(empty($row->link)){
+				<td><?= $row->jenis_pembayaran?></td>
+				<td><?php if(empty($row->link)) {
 					echo "Menunggu";
 					} else { 
 					echo	$row->link;}?></td>

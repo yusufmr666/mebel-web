@@ -80,6 +80,10 @@
                   <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" required />
                   <label for="email">Email</label>
                 </div>
+                <div class="form-floating form-floating-outline mb-3">
+                  <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Enter your email" required />
+                  <label for="text">No Handphone</label>
+                </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="input-group input-group-merge">
                     <div class="form-floating form-floating-outline">

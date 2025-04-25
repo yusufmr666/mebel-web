@@ -26,6 +26,7 @@
       rel="stylesheet" />
 
     <link rel="stylesheet" href="<?= base_url()?>assets/vendor/fonts/materialdesignicons.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Menu waves for no-customizer fix -->
     <link rel="stylesheet" href="<?= base_url()?>assets/vendor/libs/node-waves/node-waves.css" />

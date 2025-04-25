@@ -37,10 +37,16 @@ class Dashboard extends CI_Controller {
         $id_admin = $this->input->post('id_admin');
         $link = $this->input->post('link');
 
+        if(empty($link)){
+            $linkfix = "<p>BCA : 2470844674</p><p>BRI : 590101029411536</p><p>BNI : 1121573171</p><p>Rifaul anwar</p>";
+        } else {
+            $linkfix = $link;
+        }
+
 
         $data = array(
             'status'           => $status,
-            'link'           => $link,
+            'link'           => $linkfix,
         );
         
         $this->mebel_model->update('cart','id_transaksi',$id_transaksi,$data);
